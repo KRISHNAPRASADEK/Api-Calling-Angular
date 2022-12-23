@@ -1,0 +1,41 @@
+<h1 class="center">home Test</h1>
+
+<!-- {{ allUsers | json }} -->
+
+<div class="ms-3" style="width: 300px">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="search contacts here"
+    (keyup)="search($event)"
+  />
+</div>
+<br />
+
+<table>
+  <tr>
+    <th>firstName</th>
+    <th>age</th>
+    <th>email</th>
+    <th>phone</th>
+    <th>birthDate</th>
+    <th>Photo</th>
+    <th>address</th>
+  </tr>
+  <tr *ngFor="let user of allUsers | filter : searchKey : 'firstName'">
+    <td>{{ user.firstName }}</td>
+    <td>{{ user.age }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.phone }}</td>
+    <td>{{ user.birthDate }}</td>
+    <td>
+      <img
+        height="60px"
+        [src]="user.image"
+        alt="no image"
+        class="contact_image"
+      />
+    </td>
+    <td>{{ user.address.address }}</td>
+  </tr>
+</table>
